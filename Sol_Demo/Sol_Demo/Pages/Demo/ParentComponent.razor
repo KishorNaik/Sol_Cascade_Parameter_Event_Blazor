@@ -1,0 +1,37 @@
+﻿
+
+<h6>Parent Component: @FullName</h6>
+
+<CascadingValue Name="FullName" Value="FullName">
+    @*@way 1*@
+    @*<ChildComponent OnChangeValue="ChangeFullNameValue"></ChildComponent>*@
+
+    @*@way 2*@
+    <ChildComponent OnChangeValue="@((leChangeFullName)=> {
+                                         FullName = leChangeFullName;
+                                         StateHasChanged();
+                                     })"></ChildComponent>
+</CascadingValue>
+
+
+
+
+@code {
+
+    public String FullName { get; set; }
+
+    protected override void OnInitialized()
+    {
+        FullName = "Kishor Naik";
+
+        base.OnInitialized();
+    }
+
+    @*@way 1*@
+    //private void ChangeFullNameValue(string fullName)
+    //{
+    //    FullName = fullName;
+    //    StateHasChanged();
+    //}
+
+}

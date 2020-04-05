@@ -1,0 +1,25 @@
+﻿
+
+<h6>Chile Component : @FullName</h6>
+
+@*Way 1*@
+@*<button class="btn btn-danger" @onclick="OnButtonClick"> Submit </button>*@
+
+@*Way 2*@
+<button class="btn btn-danger" @onclick="@(()=> OnChangeValue?.Invoke("Eshaan Naik"))">Submit</button>
+
+@code {
+
+    [CascadingParameter(Name ="FullName")]
+    public String FullName { get; set; }
+
+    [Parameter]
+    public Action<String> OnChangeValue { get; set; }
+
+    //Way 1
+    //private void OnButtonClick()
+    //{
+    //    OnChangeValue?.Invoke("Eshaan Naik");
+    //}
+
+}
